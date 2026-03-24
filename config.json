@@ -1,0 +1,9 @@
+{
+  "SOURCE_DIR": "/Users/Philipp/Sites/contao/Master-57",
+  "SQL_BACKUP_DIR": "/Users/Philipp/Sites/contao/Master-57/templates/backUp",
+  "DB_HOST": "localhost",
+  "DB_PORT": "3306",
+  "DB_USER": "root",
+  "DB_PASS": "root",
+  "MYSQL_BIN": "/Applications/MAMP/Library/bin/mysql80/bin/mysql"
+}

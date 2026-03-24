@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contao Projekt-Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <header class="app-header">
+    <div class="logo">
+      <div class="logo-icon">⬡</div>
+      <span class="logo-text">Contao Projekt-Generator</span>
+      <span class="logo-version">v1.0</span>
+    </div>
+  </header>
+
+  <nav class="tab-nav">
+    <button class="tab-btn active" data-tab="create">projekt erstellen</button>
+    <button class="tab-btn" data-tab="settings">einstellungen</button>
+  </nav>
+
+  <main class="tab-body">
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         Tab 1 – Projekt erstellen
+    ═══════════════════════════════════════════════════════════════════════════ -->
+    <section id="tab-create" class="tab-pane active">
+
+      <p class="section-title">Ziel-Konfiguration</p>
+
+      <form id="create-form" autocomplete="off" novalidate>
+
+        <div class="form-group">
+          <label for="targetDir">Zielverzeichnis</label>
+          <input type="text" id="targetDir" name="targetDir"
+                 placeholder="/Users/me/Sites/contao/mein-neues-projekt" required>
+          <span class="hint">Absoluter Pfad – wird erstellt bzw. vollständig überschrieben.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="dbName">Datenbankname</label>
+          <input type="text" id="dbName" name="dbName"
+                 placeholder="contao_mein_projekt" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="managerUser">Manager Benutzername</label>
+            <input type="text" id="managerUser" name="managerUser"
+                   placeholder="admin" required>
+          </div>
+          <div class="form-group">
+            <label for="managerPass">Manager Passwort</label>
+            <input type="password" id="managerPass" name="managerPass" required>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" id="create-btn" class="btn btn-primary">
+            <span class="btn-icon">▶</span> run
+          </button>
+        </div>
+
+      </form>
+
+      <!-- Log-Ausgabe -->
+      <div id="log-wrap" class="log-wrap hidden">
+        <div class="log-header">
+          <div class="log-header-left">
+            <div class="log-dots">
+              <span class="dot-r"></span>
+              <span class="dot-y"></span>
+              <span class="dot-g"></span>
+            </div>
+            <span class="log-title">stdout</span>
+          </div>
+          <div class="log-controls">
+            <span id="log-status" class="log-status"></span>
+            <button id="btn-clear-log" class="btn-ghost">clear</button>
+          </div>
+        </div>
+        <div id="log-output" class="log-output" role="log" aria-live="polite"></div>
+      </div>
+
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         Tab 2 – Einstellungen
+    ═══════════════════════════════════════════════════════════════════════════ -->
+    <section id="tab-settings" class="tab-pane">
+
+      <p class="section-title">Pfade</p>
+
+      <form id="settings-form" autocomplete="off" novalidate>
+
+        <div class="form-group">
+          <label for="SOURCE_DIR">SOURCE_DIR</label>
+          <input type="text" id="SOURCE_DIR" name="SOURCE_DIR"
+                 placeholder="/Users/me/Sites/contao/master">
+          <span class="hint">Pfad zum Master-Projekt (Vorlage).</span>
+        </div>
+
+        <div class="form-group">
+          <label for="SQL_BACKUP_DIR">SQL_BACKUP_DIR</label>
+          <input type="text" id="SQL_BACKUP_DIR" name="SQL_BACKUP_DIR"
+                 placeholder="/Users/me/Sites/contao/master/templates/backUp">
+          <span class="hint">Ordner mit .sql-Dateien – die neueste wird verwendet.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="MYSQL_BIN">MYSQL_BIN</label>
+          <input type="text" id="MYSQL_BIN" name="MYSQL_BIN"
+                 placeholder="/Applications/MAMP/Library/bin/mysql80/bin/mysql">
+          <span class="hint">Vollständiger Pfad wenn <code>mysql</code> nicht im PATH – z. B. <code>/Applications/MAMP/Library/bin/mysql80/bin/mysql</code></span>
+        </div>
+
+        <p class="section-title">Datenbankverbindung</p>
+
+        <fieldset class="fieldset">
+          <legend>MySQL</legend>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="DB_HOST">DB_HOST</label>
+              <input type="text" id="DB_HOST" name="DB_HOST" placeholder="127.0.0.1">
+            </div>
+            <div class="form-group form-group--narrow">
+              <label for="DB_PORT">DB_PORT</label>
+              <input type="text" id="DB_PORT" name="DB_PORT" placeholder="3306">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="DB_USER">DB_USER</label>
+              <input type="text" id="DB_USER" name="DB_USER" placeholder="root">
+            </div>
+            <div class="form-group">
+              <label for="DB_PASS">DB_PASS</label>
+              <input type="password" id="DB_PASS" name="DB_PASS">
+            </div>
+          </div>
+
+        </fieldset>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">
+            <span class="btn-icon">↓</span> speichern
+          </button>
+          <span id="settings-msg" class="inline-msg"></span>
+        </div>
+
+      </form>
+
+    </section>
+
+  </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
